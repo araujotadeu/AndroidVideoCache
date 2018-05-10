@@ -40,6 +40,11 @@ final class HttpProxyCacheServerClients {
         try {
             clientsCount.incrementAndGet();
             proxyCache.processRequest(request, socket);
+        } catch (Exception ex) {
+            for (CacheListener cacheListener : listeners) {
+                cacheListener.onCacheError(url, ex);
+            }
+            throw  ex;
         } finally {
             finishProcessRequest();
         }
@@ -103,6 +108,11 @@ final class HttpProxyCacheServerClients {
             message.arg1 = percentsAvailable;
             message.obj = file;
             sendMessage(message);
+        }
+
+        @Override
+        public void onCacheError(String url, Exception exception) {
+            // Do nothing
         }
 
         @Override
