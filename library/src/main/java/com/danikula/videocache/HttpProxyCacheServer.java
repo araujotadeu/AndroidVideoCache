@@ -195,6 +195,15 @@ public class HttpProxyCacheServer {
         return new File(cacheDir, fileName);
     }
 
+    private String getCacheDir() {
+        File cacheDir = config.cacheRoot;
+        return cacheDir.toString();
+    }
+
+    private String getCacheFileName(String url) {
+        return config.fileNameGenerator.generate(url);
+    }
+
     private void touchFileSafely(File cacheFile) {
         try {
             config.diskUsage.touch(cacheFile);
