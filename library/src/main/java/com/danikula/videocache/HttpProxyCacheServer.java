@@ -189,18 +189,18 @@ public class HttpProxyCacheServer {
         return String.format(Locale.US, "http://%s:%d/%s", PROXY_HOST, port, ProxyCacheUtils.encode(url));
     }
 
-    private File getCacheFile(String url) {
+    public File getCacheFile(String url) {
         File cacheDir = config.cacheRoot;
         String fileName = config.fileNameGenerator.generate(url);
         return new File(cacheDir, fileName);
     }
 
-    private String getCacheDir() {
+    public String getCacheDir() {
         File cacheDir = config.cacheRoot;
         return cacheDir.toString();
     }
 
-    private String getCacheFileName(String url) {
+    public String getCacheFileName(String url) {
         return config.fileNameGenerator.generate(url);
     }
 
