@@ -100,11 +100,6 @@ public class GalleryVideoFragment extends Fragment implements CacheListener {
         progressBar.setSecondaryProgress(percentsAvailable);
     }
 
-    @Override
-    public void onCacheError(String url, Exception exception) {
-        // Do nothing
-    }
-
     private void updateVideoProgress() {
         int videoProgress = videoView.getCurrentPosition() * 100 / videoView.getDuration();
         progressBar.setProgress(videoProgress);

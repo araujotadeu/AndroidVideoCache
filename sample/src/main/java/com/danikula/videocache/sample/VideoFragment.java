@@ -89,11 +89,6 @@ public class VideoFragment extends Fragment implements CacheListener {
         Log.d(LOG_TAG, String.format("onCacheAvailable. percents: %d, file: %s, url: %s", percentsAvailable, file, url));
     }
 
-    @Override
-    public void onCacheError(String url, Exception exception) {
-        Log.d(LOG_TAG, String.format("onCacheError. url: %s error: %s", url, exception.getMessage()));
-    }
-
     private void updateVideoProgress() {
         int videoProgress = videoView.getCurrentPosition() * 100 / videoView.getDuration();
         progressBar.setProgress(videoProgress);
